@@ -70,7 +70,7 @@ def greedy_decode(model, dataloader, input_lang, output_lang):
 if __name__ == '__main__':
     input_lang, output_lang, train_dataloader = load_data.get_dataloader(batch_size)
     model = model.EncoderDecoder(hidden_size, input_lang.n_words, output_lang.n_words).to(device)
-    train(train_dataloader, model, 20)
+    train(train_dataloader, model, n_epochs=20)
     greedy_decode(model, train_dataloader, input_lang, output_lang)
 
 

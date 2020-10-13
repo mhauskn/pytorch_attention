@@ -9,6 +9,8 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 MAX_LENGTH = 10
+SOS_token = 0
+EOS_token = 1
 
 eng_prefixes = (
     "i am ", "i m ",
@@ -25,7 +27,7 @@ class Lang:
         self.name = name
         self.word2index = {}
         self.word2count = {}
-        self.index2word = {0: "SOS", 1: "EOS"}
+        self.index2word = { SOS_token: "SOS", EOS_token: "EOS"}
         self.n_words = 2  # Count SOS and EOS
 
     def addSentence(self, sentence):
